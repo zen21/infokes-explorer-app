@@ -1,0 +1,30 @@
+{
+  "name": "@infokes-explorer/backend",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "dev": "bun --watch src/index.ts",
+    "build": "tsc",
+    "start": "node dist/index.js",
+    "db:generate": "prisma generate",
+    "db:push": "prisma db push",
+    "db:seed": "bun scripts/seed-data.ts",
+    "db:setup": "bun run db:generate && bun run db:push && bun run db:seed",
+    "db:studio": "prisma studio",
+    "db:reset": "prisma db push --force-reset && bun run db:seed"
+  },
+  "dependencies": {
+    "@elysiajs/cors": "latest",
+    "@elysiajs/swagger": "latest",
+    "@file-explorer/shared": "workspace:*",
+    "@prisma/client": "^6.17.1",
+    "dotenv": "^17.2.3",
+    "elysia": "^1.4.12",
+    "zod": "^4.1.12"
+  },
+  "devDependencies": {
+    "@types/bun": "latest",
+    "prisma": "^6.17.1",
+    "typescript": "^5.9.3"
+  }
+}

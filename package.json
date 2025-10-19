@@ -1,0 +1,15 @@
+{
+  "name": "infokes-explorer-app",
+  "private": true,
+  "workspaces": ["packages/*"],
+  "scripts": {
+    "dev": "concurrently \"bun run --cwd packages/backend dev\" \"bun run --cwd packages/frontend dev\"",
+    "build": "bun run --cwd packages/shared build && bun run --cwd packages/backend build && bun run --cwd packages/frontend build",
+    "db:setup": "bun run --cwd packages/backend db:setup",
+    "install:all": "bun install && bun run install:workspaces",
+    "install:workspaces": "bun install --cwd packages/shared && bun install --cwd packages/backend && bun install --cwd packages/frontend"
+  },
+  "devDependencies": {
+    "concurrently": "^9.2.1"
+  }
+}
